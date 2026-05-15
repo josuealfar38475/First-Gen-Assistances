@@ -27,24 +27,22 @@ We implemented a interactive Dashboard where users can see the many features we 
 ---
 
 
-## User Flows Supported
-
+## Use Case Examples
 
 ### Degree Planning
 Dashboard → Degree Planner → Add/Remove Classes
 
+This will make it easier for students to plan their academic career. 
 
 ### High-Stress / Midterm Scenario
 Dashboard → Notifications → Exam Prep → Calendar
 
+They will be able to see the assignments that are coming up so a priority list is created for them so they can study hard and have structure. 
 
 ### Student Support and Recovery
 Dashboard → Resources → Contact Page
 
-
-### Major Exploration
-Dashboard → Major Exploration → Compare Majors
-
+If students need additional assistances, they can go to the Dashboard and then the Resources page. They can contact the developers if they want any additional assistances. 
 
 ## Set up and run instructions
 
