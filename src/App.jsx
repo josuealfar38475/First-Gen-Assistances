@@ -251,7 +251,11 @@ function App() {
               {page === "Contact" && <Contact />}
             </div>
 
-            {page === "Dashboard" && <AnalyticsPanel />}
+            {page === "Dashboard" && (
+              <div className="hidden md:block">
+                <AnalyticsPanel />
+              </div>
+            )}
           </div>
         </section>
       </div>
@@ -277,7 +281,7 @@ function Dashboard({ setPage }) {
       <div className="w-full max-w-full overflow-hidden rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
         <div className="grid min-w-0 gap-6 md:grid-cols-[minmax(0,1fr)_260px] md:items-center">
           <div className="min-w-0">
-            <h2 className="break-words text-2xl font-black sm:text-4xl">Welcome back, Janice! 👋</h2>
+            <h2 className="text-xl font-black leading-tight sm:text-4xl">Welcome back, Janice! 👋</h2>
             <p className="mt-4 max-w-full break-words text-base text-neutral-700 sm:max-w-xl sm:text-lg">
               You're doing great! Keep staying on track and crushing your goals.
             </p>
@@ -294,7 +298,23 @@ function Dashboard({ setPage }) {
         <ActionCard icon="👤" label="Get Support" onClick={() => setPage("Resources")} />
       </div>
 
-      <DeadlineTable setPage={setPage} />
+      <div className="hidden sm:block">
+        <DeadlineTable setPage={setPage} />
+      </div>
+
+      <div className="space-y-3 sm:hidden">
+        <div className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm">
+          <p className="font-bold">CS201</p>
+          <p className="text-sm text-neutral-600">Programming Assignment</p>
+          <p className="mt-1 text-sm font-semibold">Due May 15, 2026</p>
+        </div>
+
+        <div className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm">
+          <p className="font-bold">MATH123</p>
+          <p className="text-sm text-neutral-600">Midterm Exam</p>
+          <p className="mt-1 text-sm font-semibold">Due May 20, 2026</p>
+        </div>
+      </div>
 
       <div className="flex flex-col gap-4 rounded-3xl bg-yellow-100 p-6 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-4">
@@ -473,13 +493,13 @@ function ActionCard({ icon, label, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="flex w-full max-w-full items-center gap-4 rounded-3xl border border-neutral-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:border-yellow-400 hover:shadow-md sm:block sm:text-center"
+      className="flex w-full items-center gap-3 rounded-2xl border border-neutral-200 bg-white p-4 text-left shadow-sm sm:block sm:rounded-3xl sm:p-5 sm:text-center"
     >
-      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-2xl sm:mx-auto sm:mb-3 sm:h-16 sm:w-16 sm:text-3xl">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-xl sm:mx-auto sm:mb-3 sm:h-16 sm:w-16 sm:text-3xl">
         {icon}
       </div>
 
-      <p className="min-w-0 break-words font-bold">{label}</p>
+      <p className="text-sm font-bold sm:text-base">{label}</p>
     </button>
   )
 }
