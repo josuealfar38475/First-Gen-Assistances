@@ -5,3 +5,15 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}

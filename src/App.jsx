@@ -40,8 +40,8 @@ function App() {
 
   //Displayed onto the website 
   return (
-    <main className="min-h-screen bg-black p-0 font-sans text-black sm:p-4">
-  <div className="mx-auto flex min-h-screen w-full overflow-hidden bg-white shadow-2xl sm:min-h-[95vh] sm:max-w-7xl sm:rounded-[2rem]">
+    <main className="min-h-screen w-full overflow-x-hidden bg-white p-0 font-sans text-black sm:bg-black sm:p-4">
+      <div className="mx-auto flex min-h-screen w-full max-w-full overflow-hidden bg-white shadow-2xl sm:min-h-[95vh] sm:max-w-7xl sm:rounded-[2rem]">
         <aside className="hidden w-64 bg-neutral-950 p-6 text-white lg:block">
           <div className="flex items-center gap-3">
             <div className="rounded-xl bg-yellow-400 p-2 text-black">🎓</div>
@@ -96,7 +96,7 @@ function App() {
         </aside>
 
         <section className="w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto bg-white p-4 sm:p-5 lg:p-8">
-          <header className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <header className="flex min-w-0 flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="flex w-fit items-center gap-2 rounded-xl bg-black px-4 py-3 font-bold text-white lg:hidden"
@@ -104,7 +104,7 @@ function App() {
               ☰ Menu
             </button>
             {mobileMenuOpen && (
-              <div className="rounded-2xl border border-neutral-200 bg-white p-3 shadow-lg lg:hidden">
+              <div className="w-full rounded-2xl border border-neutral-200 bg-white p-3 shadow-lg lg:hidden">
                 {navItems.map((item) => (
                   <button
                     key={item}
@@ -123,7 +123,7 @@ function App() {
                 ))}
               </div>
             )}
-            <div className="relative w-full lg:max-w-xl">
+            <div className="relative w-full min-w-0 lg:max-w-xl">
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -232,8 +232,8 @@ function App() {
             </div>
           </header>
 
-          <div className={`mt-6 grid gap-6 sm:mt-8 sm:gap-8 ${page === "Dashboard" ? "xl:grid-cols-[1fr_360px]" : ""}`}>
-            <div className="space-y-7">
+          <div className={`mt-6 grid w-full min-w-0 gap-6 sm:mt-8 sm:gap-8 ${page === "Dashboard" ? "xl:grid-cols-[minmax(0,1fr)_360px]" : ""}`}>
+            <div className="min-w-0 space-y-7">
               {page === "Dashboard" && <Dashboard setPage={setPage} />}
               {page === "Degree Planner" && (
                 <DegreePlanner
@@ -274,11 +274,11 @@ const icons = {
 function Dashboard({ setPage }) {
   return (
     <>
-      <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
-        <div className="grid gap-6 md:grid-cols-[1fr_260px] md:items-center">
-          <div>
-            <h2 className="text-3xl font-black sm:text-4xl">Welcome back, Janice! 👋</h2>
-            <p className="mt-4 max-w-xl text-base text-neutral-700 sm:text-lg">
+      <div className="w-full max-w-full overflow-hidden rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
+        <div className="grid min-w-0 gap-6 md:grid-cols-[minmax(0,1fr)_260px] md:items-center">
+          <div className="min-w-0">
+            <h2 className="break-words text-2xl font-black sm:text-4xl">Welcome back, Janice! 👋</h2>
+            <p className="mt-4 max-w-full break-words text-base text-neutral-700 sm:max-w-xl sm:text-lg">
               You're doing great! Keep staying on track and crushing your goals.
             </p>
           </div>
@@ -286,7 +286,7 @@ function Dashboard({ setPage }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
         <ActionCard icon="🎓" label="View Degree Plan" onClick={() => setPage("Degree Planner")} />
         <ActionCard icon="📅" label="Check Deadlines" onClick={() => setPage("Calendar")} />
         <ActionCard icon="📖" label="Start Study Plan" onClick={() => setPage("Exam Prep")} />
@@ -327,16 +327,16 @@ function DegreePlanner({ courses, setCourses, recommended, setRecommended }) {
   }
 
   return (
-    <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-      <h2 className="text-4xl font-black">Degree Planner</h2>
-      <p className="mt-4 text-lg text-neutral-700">Computer Science progress: {courses.length * 25}%</p>
+    <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
+      <h2 className="text-3xl font-black sm:text-4xl">Degree Planner</h2>
+      <p className="mt-4 text-base text-neutral-700 sm:text-lg">Computer Science progress: {courses.length * 25}%</p>
 
       <div className="mt-4 h-4 rounded-full bg-neutral-200">
         <div className="h-4 rounded-full bg-yellow-400" style={{ width: `${courses.length * 25}%` }}></div>
       </div>
 
       <h3 className="mt-8 text-2xl font-bold">Current Classes</h3>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
         {courses.map((course) => (
           <div key={course} className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
             ✅ {course}
@@ -365,9 +365,9 @@ function DegreePlanner({ courses, setCourses, recommended, setRecommended }) {
 //Major Exploration Tab
 function MajorExploration() {
   return (
-    <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-      <h2 className="text-4xl font-black">Major Exploration</h2>
-      <p className="mt-4 text-lg text-neutral-700">Search and compare majors based on your interests.</p>
+    <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
+      <h2 className="text-3xl font-black sm:text-4xl">Major Exploration</h2>
+      <p className="mt-4 text-base text-neutral-700 sm:text-lg">Search and compare majors based on your interests.</p>
 
       <input className="mt-6 w-full rounded-xl border border-neutral-200 px-5 py-3 text-sm outline-none focus:border-yellow-400" placeholder="Search majors or courses..." />
 
@@ -383,9 +383,9 @@ function MajorExploration() {
 //Exam Preparation Tab
 function ExamPrep() {
   return (
-    <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-      <h2 className="text-4xl font-black">Exam Prep</h2>
-      <p className="mt-4 text-lg text-neutral-700">Your MATH123 midterm is next week.</p>
+    <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
+      <h2 className="text-3xl font-black sm:text-4xl">Exam Prep</h2>
+      <p className="mt-4 text-base text-neutral-700 sm:text-lg">Your MATH123 midterm is next week.</p>
 
       <div className="mt-8 space-y-4">
         <Prep text="Monday, 6:00 PM - Review notes" />
@@ -400,9 +400,9 @@ function ExamPrep() {
 //Resources Tab
 function Resources() {
   return (
-    <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-      <h2 className="text-4xl font-black">Resources</h2>
-      <p className="mt-4 text-lg text-neutral-700">Find support without needing to know where to start.</p>
+    <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
+      <h2 className="text-3xl font-black sm:text-4xl">Resources</h2>
+      <p className="mt-4 text-base text-neutral-700 sm:text-lg">Find support without needing to know where to start.</p>
 
       <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
         <Resource text="📘 Tutoring Services" />
@@ -418,9 +418,9 @@ function Resources() {
 //Calendar Tab
 function Calendar() {
   return (
-    <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-      <h2 className="text-4xl font-black">Calendar</h2>
-      <p className="mt-4 text-lg text-neutral-700">Your upcoming academic deadlines are shown below.</p>
+    <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
+      <h2 className="text-3xl font-black sm:text-4xl">Calendar</h2>
+      <p className="mt-4 text-base text-neutral-700 sm:text-lg">Your upcoming academic deadlines are shown below.</p>
       <div className="mt-8">
         <DeadlineTable />
       </div>
@@ -431,8 +431,8 @@ function Calendar() {
 //Notifications Tab
 function Notifications() {
   return (
-    <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-      <h2 className="text-4xl font-black">Notifications</h2>
+    <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
+      <h2 className="text-3xl font-black sm:text-4xl">Notifications</h2>
       <div className="mt-8 space-y-4">
         <Notification title="Assignment Due Tomorrow" text="CS201 Programming Assignment is due May 15 at 11:59 PM." />
         <Notification title="Midterm Reminder" text="MATH123 midterm is scheduled for May 20. Start your study plan this week." />
@@ -445,11 +445,11 @@ function Notifications() {
 //Contact Info Tab
 function Contact() {
   return (
-    <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-      <h2 className="text-4xl font-black">Contact Us</h2>
-      <p className="mt-4 text-lg text-neutral-700">For additional questions, contact the FirstGen Planner support team.</p>
+    <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
+      <h2 className="text-3xl font-black sm:text-4xl">Contact Us</h2>
+      <p className="mt-4 text-base text-neutral-700 sm:text-lg">For additional questions, contact the FirstGen Planner support team.</p>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
         <Resource text="📧 Email: support@firstgenplanner.edu" />
         <Resource text="📞 Phone: (555) 123-4567" />
         <Resource text="🏫 Office: Student Success Center, Room 204" />
@@ -460,7 +460,7 @@ function Contact() {
         <h3 className="text-xl font-bold">Send a Message</h3>
         <input className="mt-4 w-full rounded-xl border p-3" placeholder="Your name" />
         <input className="mt-3 w-full rounded-xl border p-3" placeholder="Your email" />
-        <textarea className="mt-3 w-full rounded-xl border p-3" placeholder="What do you need help with?"></textarea>
+        <textarea className="mt-3 min-h-28 w-full rounded-xl border p-3" placeholder="What do you need help with?"></textarea>
         <button className="mt-4 rounded-xl bg-yellow-400 px-6 py-3 font-bold hover:bg-yellow-300">Submit</button>
       </div>
     </div>
@@ -473,13 +473,13 @@ function ActionCard({ icon, label, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="flex w-full items-center gap-4 rounded-3xl border border-neutral-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:border-yellow-400 hover:shadow-md sm:block sm:text-center"
+      className="flex w-full max-w-full items-center gap-4 rounded-3xl border border-neutral-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:border-yellow-400 hover:shadow-md sm:block sm:text-center"
     >
       <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-2xl sm:mx-auto sm:mb-3 sm:h-16 sm:w-16 sm:text-3xl">
         {icon}
       </div>
 
-      <p className="break-words font-bold">{label}</p>
+      <p className="min-w-0 break-words font-bold">{label}</p>
     </button>
   )
 }
@@ -487,24 +487,24 @@ function ActionCard({ icon, label, onClick }) {
 //Deadline table being displayed
 function DeadlineTable({ setPage }) {
   return (
-    <div className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
-      <div className="mb-5 flex items-center justify-between">
-        <h3 className="text-2xl font-bold">Upcoming Deadlines</h3>
+    <div className="w-full max-w-full rounded-3xl border border-neutral-200 bg-white p-4 shadow-sm sm:p-6">
+      <div className="mb-5 flex items-center justify-between gap-4">
+        <h3 className="text-xl font-bold sm:text-2xl">Upcoming Deadlines</h3>
         {setPage && (
-          <button onClick={() => setPage("Calendar")} className="font-bold text-yellow-500">
+          <button onClick={() => setPage("Calendar")} className="shrink-0 font-bold text-yellow-500">
             View All
           </button>
         )}
       </div>
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] border-collapse text-left text-xs sm:min-w-[700px] sm:text-sm">
+      <div className="w-full max-w-full overflow-x-auto">
+        <table className="w-full min-w-[520px] border-collapse text-left text-xs sm:min-w-[700px] sm:text-sm">
           <thead>
             <tr className="border-b bg-neutral-50">
-              <th className="p-4">Course</th>
-              <th className="p-4">Assignment</th>
-              <th className="p-4">Due Date</th>
-              <th className="p-4">Priority</th>
-              <th className="p-4">Status</th>
+              <th className="p-3 sm:p-4">Course</th>
+              <th className="p-3 sm:p-4">Assignment</th>
+              <th className="p-3 sm:p-4">Due Date</th>
+              <th className="p-3 sm:p-4">Priority</th>
+              <th className="p-3 sm:p-4">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -526,13 +526,13 @@ function Deadline({ course, assignment, date, priority, status }) {
 
   return (
     <tr className="border-b">
-      <td className="p-4 font-bold">{course}</td>
-      <td className="p-4">{assignment}</td>
-      <td className="p-4">{date}</td>
-      <td className="p-4">
+      <td className="p-3 font-bold sm:p-4">{course}</td>
+      <td className="p-3 sm:p-4">{assignment}</td>
+      <td className="p-3 sm:p-4">{date}</td>
+      <td className="p-3 sm:p-4">
         <span className={`rounded-lg px-3 py-1 text-xs font-bold ${priorityStyle}`}>{priority}</span>
       </td>
-      <td className="p-4">
+      <td className="p-3 sm:p-4">
         <span className="rounded-lg bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700">{status}</span>
       </td>
     </tr>
@@ -542,7 +542,7 @@ function Deadline({ course, assignment, date, priority, status }) {
 //Contact information at the bottom 
 function ContactStrip({ setPage }) {
   return (
-    <div className="flex flex-col gap-4 rounded-3xl border border-neutral-200 p-6 md:flex-row md:items-center md:justify-between">
+    <div className="flex flex-col gap-4 rounded-3xl border border-neutral-200 p-5 sm:p-6 md:flex-row md:items-center md:justify-between">
       <div className="flex items-center gap-4">
         <div className="text-4xl">✉️</div>
         <div>
@@ -569,19 +569,19 @@ function Major({ title, text }) {
 
 //Exam preparation colleration 
 function Prep({ text }) {
-  return <div className="rounded-3xl border border-yellow-300 bg-yellow-100 p-6 shadow-sm">{text}</div>
+  return <div className="rounded-3xl border border-yellow-300 bg-yellow-100 p-5 shadow-sm sm:p-6">{text}</div>
 }
 
 //Resources Tab
 function Resource({ text }) {
-  return <div className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">{text}</div>
+  return <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">{text}</div>
 }
 
 
 //Notification display
 function Notification({ title, text }) {
   return (
-    <div className="rounded-3xl border border-yellow-300 bg-yellow-100 p-6 shadow-sm">
+    <div className="rounded-3xl border border-yellow-300 bg-yellow-100 p-5 shadow-sm sm:p-6">
       <h3 className="font-bold">{title}</h3>
       <p className="mt-2 text-sm text-neutral-700">{text}</p>
     </div>
@@ -592,7 +592,7 @@ function Notification({ title, text }) {
 //Analytics Panle showing the users information about studying 
 function AnalyticsPanel() {
   return (
-    <aside className="space-y-5">
+    <aside className="min-w-0 space-y-5">
       <h3 className="text-2xl font-bold">Your Analytics</h3>
       <PanelCard title="Degree Progress" value="65% Complete">
         <div className="mt-4 h-4 rounded-full bg-neutral-200">
@@ -631,7 +631,7 @@ function AnalyticsPanel() {
 
 function PanelCard({ title, value, children }) {
   return (
-    <div className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+    <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="flex items-center justify-between">
         <h4 className="font-bold">{title}</h4>
         <span className="font-bold text-yellow-500">{value}</span>
