@@ -95,7 +95,7 @@ function App() {
           </div>
         </aside>
 
-        <section className="w-full flex-1 overflow-y-auto bg-white p-4 sm:p-5 lg:p-8">
+        <section className="w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto bg-white p-4 sm:p-5 lg:p-8">
           <header className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -277,8 +277,8 @@ function Dashboard({ setPage }) {
       <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
         <div className="grid gap-6 md:grid-cols-[1fr_260px] md:items-center">
           <div>
-            <h2 className="text-4xl font-black">Welcome back, Janice! 👋</h2>
-            <p className="mt-4 max-w-xl text-lg text-neutral-700">
+            <h2 className="text-3xl font-black sm:text-4xl">Welcome back, Janice! 👋</h2>
+            <p className="mt-4 max-w-xl text-base text-neutral-700 sm:text-lg">
               You're doing great! Keep staying on track and crushing your goals.
             </p>
           </div>
@@ -286,7 +286,7 @@ function Dashboard({ setPage }) {
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
         <ActionCard icon="🎓" label="View Degree Plan" onClick={() => setPage("Degree Planner")} />
         <ActionCard icon="📅" label="Check Deadlines" onClick={() => setPage("Calendar")} />
         <ActionCard icon="📖" label="Start Study Plan" onClick={() => setPage("Exam Prep")} />
@@ -471,9 +471,15 @@ function Contact() {
 //Allowing cards to be clicked on 
 function ActionCard({ icon, label, onClick }) {
   return (
-    <button onClick={onClick} className="rounded-3xl border border-neutral-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-1 hover:border-yellow-400 hover:shadow-md">
-      <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100 text-3xl">{icon}</div>
-      <p className="font-bold">{label}</p>
+    <button
+      onClick={onClick}
+      className="flex w-full items-center gap-4 rounded-3xl border border-neutral-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:border-yellow-400 hover:shadow-md sm:block sm:text-center"
+    >
+      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-2xl sm:mx-auto sm:mb-3 sm:h-16 sm:w-16 sm:text-3xl">
+        {icon}
+      </div>
+
+      <p className="break-words font-bold">{label}</p>
     </button>
   )
 }
@@ -491,7 +497,7 @@ function DeadlineTable({ setPage }) {
         )}
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[700px] border-collapse text-left text-sm">
+        <table className="w-full min-w-[560px] border-collapse text-left text-xs sm:min-w-[700px] sm:text-sm">
           <thead>
             <tr className="border-b bg-neutral-50">
               <th className="p-4">Course</th>
