@@ -21,17 +21,7 @@ Road To Success is designed to support first-generation students on their journe
 
 ## Features Implemented
 
-- Dashboard page
-- Degree Planner with add/remove classes
-- Major Exploration page
-- Exam Preparation page
-- Notifications system
-- Calendar and deadlines
-- Campus Resources page
-- Contact and support page
-- Responsive mobile navigation
-- Analytics view
-- Search functionality
+We implemented a interactive Dashboard where users can see the many features we have and look at any upcoming deadlines. We have a search function and great navigation icons so users know what to search and where. The Degree Planner allows students to add classes to their plan or remove them to adjust their schedule. The Major Exploration shows different classes with the specific major the student wants to explore. Exam Preparation creates a calendar and weekly schedule for the student to follow. The Notification system allows students to get alerted when an assignment is about to be due. Calendar and Deadline is similar to notifications where it displays the assignmentns and priority list the student needs to complete their task. Campus Resource page shows the different resources the school has to offer. We create a support and contact page so if any issues occur they can contact us. Additionaly, we created a analytics view to show their progress. 
 
 
 ---
@@ -56,7 +46,7 @@ Dashboard → Resources → Contact Page
 Dashboard → Major Exploration → Compare Majors
 
 
-## Installation Instructions
+## Set up and run instructions
 
 ### Clone the Repository
 
@@ -88,11 +78,7 @@ http://localhost:5173
 
 ### Create Production Build
 
-npm run build
-
-### Preview Production Build
-
-npm run preview
+npm run builds
 
 ---
 
@@ -137,61 +123,6 @@ git push -u origin main
 
 ## Deployment Link
 
-Add deployed URL here after deployment.
-
-Example:
-
 https://first-gen-assistances.vercel.app/
 
 ---
-
-## Folder Structure
-448-project/
-    dist/
-    node_modules/
-    public/
-    src/
-        /assessts
-    ├── App.css
-    ├── App.jsx
-    ├── main.jsx
-    ├── index.css
-    ├── main.jsx
-.gitignore
-eslint.config.js
-index.html
-package-lock.json
-package.json
-README.md
-vite.config.js
-
----
-
-## Accessibility and Responsive Design
-This project includes:
-- Responsive mobile navigation
-- Accessible labels and buttons
-- Readable text contrast
-- Responsive desktop/tablet/mobile layouts
-- Clear navigation structure
-- Reduced cognitive load
-- Notification and feedback systems
-
----
-
-## Project Purpose
-This system was designed to support first-generation college students who may feel overwhelmed navigating academic systems, deadlines, and campus resources. The platform focuses on reducing confusion, improving organization, and helping students access support more confidently.
-
----
-
-## Assignment Goals Addressed
-This project fulfills the Assignment 3 requirements by including:
-- 5+ connected screens/pages
-- Interactive user flows
-- Search/input interactions
-- Support/help systems
-- Notifications and feedback states
-- Responsive design
-- Accessibility considerations
-- Deployed front-end implementation
-- Student-focused UI/UX design
