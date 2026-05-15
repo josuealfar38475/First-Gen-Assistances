@@ -233,7 +233,7 @@ function App() {
             </div>
           </header>
 
-          <div className={`mt-6 grid w-full min-w-0 gap-6 sm:mt-8 sm:gap-8 ${page === "Dashboard" ? "xl:grid-cols-[minmax(0,1fr)_360px]" : ""}`}>
+          <div className="mt-6 grid w-full min-w-0 gap-6 sm:mt-8 sm:gap-8">
             <div className="min-w-0 space-y-7">
               {page === "Dashboard" && <Dashboard setPage={setPage} />}
               {page === "Degree Planner" && (
@@ -277,7 +277,7 @@ function Dashboard({ setPage }) {
   return (
     <>
       <div className="w-full max-w-full overflow-hidden rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
-        <div className="grid min-w-0 gap-6 md:grid-cols-[minmax(0,1fr)_260px] md:items-center">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center">
           <div className="min-w-0">
             <h2 className="text-xl font-black leading-tight sm:text-4xl">Welcome back, Janice! 👋</h2>
             <p className="mt-4 max-w-full break-words text-base text-neutral-700 sm:max-w-xl sm:text-lg">
@@ -288,7 +288,7 @@ function Dashboard({ setPage }) {
         </div>
       </div>
 
-      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <ActionCard icon="🎓" label="View Degree Plan" onClick={() => setPage("Degree Planner")} />
         <ActionCard icon="📅" label="Check Deadlines" onClick={() => setPage("Calendar")} />
         <ActionCard icon="📖" label="Start Study Plan" onClick={() => setPage("Exam Prep")} />
