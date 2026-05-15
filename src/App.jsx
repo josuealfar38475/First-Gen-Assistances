@@ -40,14 +40,14 @@ function App() {
 
   //Displayed onto the website 
   return (
-    <main className="min-h-screen bg-black p-4 font-sans text-black">
-      <div className="mx-auto flex min-h-[95vh] max-w-7xl overflow-hidden rounded-[2rem] bg-white shadow-2xl">
+    <main className="min-h-screen bg-black p-0 font-sans text-black sm:p-4">
+  <div className="mx-auto flex min-h-screen w-full overflow-hidden bg-white shadow-2xl sm:min-h-[95vh] sm:max-w-7xl sm:rounded-[2rem]">
         <aside className="hidden w-64 bg-neutral-950 p-6 text-white lg:block">
           <div className="flex items-center gap-3">
             <div className="rounded-xl bg-yellow-400 p-2 text-black">🎓</div>
             <div>
               <h1 className="text-lg font-bold">
-                FirstGen <span className="text-yellow-400">Planner</span>
+                Road To <span className="text-yellow-400">Success</span>
               </h1>
               <p className="text-xs text-neutral-300">Plan. Learn. Succeed.</p>
             </div>
@@ -95,7 +95,7 @@ function App() {
           </div>
         </aside>
 
-        <section className="flex-1 overflow-y-auto bg-white p-5 lg:p-8">
+        <section className="w-full flex-1 overflow-y-auto bg-white p-4 sm:p-5 lg:p-8">
           <header className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -123,7 +123,7 @@ function App() {
                 ))}
               </div>
             )}
-            <div className="relative w-full max-w-xl">
+            <div className="relative w-full lg:max-w-xl">
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -155,7 +155,7 @@ function App() {
                 </div>
               )}
             </div>
-            <div className="flex items-center gap-5">
+            <div className="flex flex-wrap items-center gap-4">
               <div className="flex items-center gap-3">
                 <div className="rounded-full bg-black p-2 text-white">
                   👤
@@ -183,7 +183,7 @@ function App() {
                 </button>
 
                 {notificationOpen && (
-                  <div className="absolute right-10 top-0 z-30 w-80 rounded-3xl border border-neutral-300 bg-white p-5 shadow-xl">
+                  <div className="absolute right-0 top-10 z-30 w-[18rem] rounded-3xl border border-neutral-300 bg-white p-5 shadow-xl sm:right-10 sm:top-0 sm:w-80">
                     <div className="mb-4 flex items-center justify-between">
                       <h3 className="text-lg font-bold">
                         Notifications
@@ -232,7 +232,7 @@ function App() {
             </div>
           </header>
 
-          <div className={`mt-8 grid gap-8 ${page === "Dashboard" ? "xl:grid-cols-[1fr_360px]" : ""}`}>
+          <div className={`mt-6 grid gap-6 sm:mt-8 sm:gap-8 ${page === "Dashboard" ? "xl:grid-cols-[1fr_360px]" : ""}`}>
             <div className="space-y-7">
               {page === "Dashboard" && <Dashboard setPage={setPage} />}
               {page === "Degree Planner" && (
@@ -274,7 +274,7 @@ const icons = {
 function Dashboard({ setPage }) {
   return (
     <>
-      <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
+      <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
         <div className="grid gap-6 md:grid-cols-[1fr_260px] md:items-center">
           <div>
             <h2 className="text-4xl font-black">Welcome back, Janice! 👋</h2>
@@ -298,7 +298,7 @@ function Dashboard({ setPage }) {
 
       <div className="flex flex-col gap-4 rounded-3xl bg-yellow-100 p-6 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-4">
-          <div className="text-4xl">📢</div>
+          <div className="text-3xl font-black sm:text-4xl">📢</div>
           <div>
             <h3 className="text-lg font-bold">Academic Advising Available!</h3>
             <p className="text-sm text-neutral-700">Schedule your advising appointment before enrollment opens.</p>
@@ -336,7 +336,7 @@ function DegreePlanner({ courses, setCourses, recommended, setRecommended }) {
       </div>
 
       <h3 className="mt-8 text-2xl font-bold">Current Classes</h3>
-      <div className="mt-4 grid gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {courses.map((course) => (
           <div key={course} className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
             ✅ {course}
@@ -348,7 +348,7 @@ function DegreePlanner({ courses, setCourses, recommended, setRecommended }) {
       </div>
 
       <h3 className="mt-8 text-2xl font-bold">Recommended Classes</h3>
-      <div className="mt-4 grid gap-4 md:grid-cols-2">
+      <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
         {recommended.map((course) => (
           <div key={course} className="rounded-3xl border border-yellow-300 bg-yellow-100 p-6 shadow-sm">
             ⭐ Recommended: {course}
@@ -371,7 +371,7 @@ function MajorExploration() {
 
       <input className="mt-6 w-full rounded-xl border border-neutral-200 px-5 py-3 text-sm outline-none focus:border-yellow-400" placeholder="Search majors or courses..." />
 
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
+      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
         <Major title="Computer Science" text="Entry classes: CS101, MATH123, CS201" />
         <Major title="Software Engineering" text="Entry classes: CS101, SE110, MATH123" />
         <Major title="Data Science" text="Entry classes: STAT101, CS101, MATH150" />
@@ -404,7 +404,7 @@ function Resources() {
       <h2 className="text-4xl font-black">Resources</h2>
       <p className="mt-4 text-lg text-neutral-700">Find support without needing to know where to start.</p>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
         <Resource text="📘 Tutoring Services" />
         <Resource text="🎓 Academic Advising" />
         <Resource text="💰 Financial Aid" />
