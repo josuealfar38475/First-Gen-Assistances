@@ -13,16 +13,17 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   //Tabs 
-  const navItems = [
-    "Dashboard",
-    "Degree Planner",
-    "Major Exploration",
-    "Exam Prep",
-    "Resources",
-    "Calendar",
-    "Notifications",
-    "Contact",
-  ]
+ const navItems = [
+  "Dashboard",
+  "Degree Planner",
+  "Major Exploration",
+  "Exam Prep",
+  "Resources",
+  "Calendar",
+  "Analytics",
+  "Notifications",
+  "Contact",
+]
 
   //Searching option
   const searchResults = [
@@ -251,11 +252,7 @@ function App() {
               {page === "Contact" && <Contact />}
             </div>
 
-            {page === "Dashboard" && (
-              <div className="hidden md:block">
-                <AnalyticsPanel />
-              </div>
-            )}
+            {page === "Analytics" && <AnalyticsPage />}
           </div>
         </section>
       </div>
@@ -272,6 +269,7 @@ const icons = {
   Calendar: "📅",
   Notifications: "🔔",
   Contact: "✉️",
+  Analytics: "📊",
 }
 
 //Dashboard Tab
@@ -608,6 +606,24 @@ function Notification({ title, text }) {
   )
 }
 
+//Analytics Page
+function AnalyticsPage() {
+  return (
+    <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
+      <h2 className="text-3xl font-black sm:text-4xl">
+        Analytics
+      </h2>
+
+      <p className="mt-4 text-base text-neutral-700 sm:text-lg">
+        Track your academic performance and study habits.
+      </p>
+
+      <div className="mt-8">
+        <AnalyticsPanel />
+      </div>
+    </div>
+  )
+}
 
 //Analytics Panle showing the users information about studying 
 function AnalyticsPanel() {
